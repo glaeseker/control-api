@@ -2,6 +2,7 @@ package main
 
 import (
 	"control-api/handlers"
+	"control-api/model"
 	"control-api/repositories"
 	"database/sql"
 	"github.com/gofiber/fiber/v2"
@@ -36,7 +37,7 @@ func (api *APIServer) Run() {
 }
 
 func (api *APIServer) handlePostRcon(c *fiber.Ctx) error {
-	rcon := new(Rcon)
+	rcon := new(model.Rcon)
 	if err := c.BodyParser(rcon); err != nil {
 		return c.Status(400).JSON(err.Error())
 	}
